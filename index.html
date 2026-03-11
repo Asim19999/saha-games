@@ -125,7 +125,21 @@ canvas#gallows{display:block;flex-shrink:0}
 </head>
 <body>
 <div id="app">
-  <div class="screen active" id="homeScreen">
+<div class="screen active" id="tutorialScreen">
+  <div class="home-logo">🪢 Save The<br>Hangman</div>
+  <div style="width:100%;max-width:320px;background:#1a1a2e;border:1px solid #333;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:14px">
+    <div style="font-size:0.8rem;font-weight:700;color:#f0c040;text-align:center">كيف تلعب؟ 🎮</div>
+    <div style="font-size:0.75rem;color:#ccc;line-height:1.8">
+      👤 <b style="color:#ff8888">واضع الكلمة</b> — يختار كلمة سرية ويكتب تلميح، ويشارك الكود لصديقه<br><br>
+      🎮 <b style="color:#88cc88">المخمّن</b> — يدخل الكود ويخمن الكلمة حرف بحرف<br><br>
+      ❤️ عندك <b style="color:#f0c040">6 أخطاء</b> — كل خطأ يرسم جزء من الشخصية<br><br>
+      💀 لو خسرت الجولة — عندك <b style="color:#f0c040">3 محاولات</b> تكتب الكلمة كاملة<br><br>
+      💡 زر <b style="color:#88aaff">التلميح</b> — يكشف لك حرف من الكلمة<br><br>
+      ⏱️ عندك <b style="color:#f0c040">15 ثانية</b> لكل حرف وإلا يحسب خطأ!
+    </div>
+    <button class="big-btn btn-gold" onclick="showScreen('homeScreen')">فاهمت — ابدأ اللعب! 🚀</button>
+  </div>
+</div> <div class="screen" id="homeScreen">
   <div class="home-logo">🪢 Save The<br>Hangman</div>
   <div class="home-sub">العب مع صديقك أونلاين!</div>
   <div class="home-card">
@@ -265,3 +279,4 @@ function showToast(msg){var t=document.getElementById("toast");t.textContent=msg
 </script>
 </body>
 </html>
+

@@ -17,17 +17,23 @@ html,body{width:100%;height:100%;font-family:"Noto Kufi Arabic",sans-serif;backg
 .home-sub{font-size:0.75rem;color:#666;text-align:center}
 .home-card{width:100%;max-width:320px;background:#1a1a2e;border:1px solid #333;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px}
 .card-title{font-size:0.8rem;font-weight:700;color:#888;text-align:center;letter-spacing:2px}
-.big-btn{width:100%;padding:14px;border:none;border-radius:12px;font-family:"Noto Kufi Arabic",sans-serif;font-size:0.95rem;font-weight:800;cursor:pointer}
+.big-btn{width:100%;padding:14px;border:none;border-radius:12px;font-family:"Noto Kufi Arabic",sans-serif;font-size:0.95rem;font-weight:800;cursor:pointer;transition:all 0.15s}
+.big-btn:active{transform:scale(0.96)}
 .btn-gold{background:linear-gradient(135deg,#b59f3b,#f0c040);color:#1a0800}
 .btn-blue{background:linear-gradient(135deg,#1a3a6a,#2255aa);color:#fff;border:1px solid #3366cc}
 .divider{text-align:center;color:#444;font-size:0.7rem}
 .code-input{width:100%;padding:12px;background:#111;border:2px solid #333;border-radius:10px;color:#f0c040;font-family:"Noto Kufi Arabic",sans-serif;font-size:1.2rem;font-weight:900;text-align:center;letter-spacing:6px;outline:none}
+.code-input:focus{border-color:#f0c040}
+.code-input::placeholder{color:#444;letter-spacing:2px;font-size:0.8rem}
 .we-title{font-size:1rem;font-weight:900;color:#f0c040;text-align:center}
 .we-sub{font-size:0.65rem;color:#666;text-align:center}
 .room-code-display{background:rgba(212,160,23,0.1);border:2px solid rgba(212,160,23,0.3);border-radius:14px;padding:12px 20px;text-align:center}
 .room-code-display .lbl{font-size:0.55rem;color:#888;letter-spacing:2px}
 .room-code-display .code{font-size:2rem;font-weight:900;color:#f0c040;letter-spacing:8px}
 .word-entry-input{width:100%;max-width:320px;padding:14px;background:#111;border:2px solid #333;border-radius:12px;color:#fff;font-family:"Noto Kufi Arabic",sans-serif;font-size:1.1rem;font-weight:700;text-align:center;outline:none}
+.word-entry-input:focus{border-color:#f0c040}
+.hint-entry-input{width:100%;max-width:320px;padding:10px 14px;background:#111;border:2px solid #333;border-radius:12px;color:#88aaff;font-family:"Noto Kufi Arabic",sans-serif;font-size:0.9rem;font-weight:700;text-align:center;outline:none}
+.hint-entry-input:focus{border-color:#88aaff}
 .waiting-msg{font-size:0.7rem;color:#888;text-align:center;animation:pulse 1.5s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 #header{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid #222}
@@ -45,14 +51,12 @@ html,body{width:100%;height:100%;font-family:"Noto Kufi Arabic",sans-serif;backg
 #topSection{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;width:100%;padding:4px 10px}
 canvas#gallows{display:block;flex-shrink:0}
 .word-block{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
-.cat-row{display:flex;align-items:center;gap:5px;flex-wrap:wrap;justify-content:center}
-.cat-badge{font-size:0.55rem;font-weight:700;padding:2px 9px;border-radius:20px;background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.25);color:#f0c040}
-.type-badge{font-size:0.55rem;font-weight:700;padding:2px 9px;border-radius:20px;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.55)}
 .hint-text{font-size:0.6rem;color:#88aaff;min-height:14px;text-align:center}
 .letters-row{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;padding:0 4px}
 .lb{width:clamp(28px,7.5vw,40px);height:clamp(32px,8.5vw,44px);border-bottom:3px solid #f0c040;display:flex;align-items:center;justify-content:center;font-size:clamp(0.95rem,3.5vw,1.3rem);font-weight:900}
 .lb.space{border-bottom:none;width:12px}
-.lb.revealed{color:#f0c040}
+.lb.revealed{color:#f0c040;animation:revL 0.25s cubic-bezier(0.34,1.4,0.64,1)}
+@keyframes revL{from{transform:scale(0.3);opacity:0}to{transform:scale(1);opacity:1}}
 .lb.wrong-reveal{color:#ff5555}
 .tried-row{display:flex;gap:3px;flex-wrap:wrap;justify-content:center;min-height:16px;padding:0 8px}
 .tc{font-size:0.65rem;font-weight:700}
@@ -60,20 +64,22 @@ canvas#gallows{display:block;flex-shrink:0}
 .setter-watch{flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;width:100%}
 .setter-watch-title{font-size:0.7rem;color:#888;text-align:center}
 .setter-letters{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.setter-letter{width:44px;height:44px;border-radius:8px;background:#1e1e2e;border:1.5px solid #3a3a5a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff}
+.setter-letter{width:44px;height:44px;border-radius:8px;background:#1e1e2e;border:1.5px solid #3a3a5a;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff;transition:all 0.2s}
 .setter-letter.hit{background:#1a3a1a;border-color:#538d4e;color:#538d4e}
 .setter-letter.miss{background:#2a1010;border-color:#662222;color:#ff4444}
 .setter-word-reveal{font-size:0.65rem;color:#f0c040;text-align:center}
 .wrong-count{font-size:0.8rem;font-weight:700;color:#ff8888;text-align:center}
-#keyboard{flex:0 0 auto;width:100%;max-width:440px;padding:0 5px 8px;display:flex;flex-direction:column;gap:4px}
+#keyboard{flex:0 0 auto;width:100%;max-width:440px;padding:0 5px 8px;padding-bottom:max(8px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:4px}
 .kb-row{display:flex;gap:4px;justify-content:center}
 .key{flex:1;min-width:0;height:clamp(34px,8.5vw,44px);border-radius:7px;background:#1e1e2e;border:1.5px solid #3a3a5a;color:#ccc;font-family:"Noto Kufi Arabic",sans-serif;font-size:clamp(0.78rem,2.5vw,0.95rem);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.key:active{transform:scale(0.87)}
 .key.hit{background:#1a3a1a;border-color:#538d4e;color:#538d4e}
 .key.miss{background:#2a1010;border-color:#662222;color:#ff4444}
 .key.used{opacity:0.28;pointer-events:none}
 .overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);z-index:100}
 .overlay.show{display:flex}
-.res-box{background:#16162a;border:2px solid #f0c040;border-radius:20px;padding:22px 20px;text-align:center;max-width:290px;width:90%}
+.res-box{background:#16162a;border:2px solid #f0c040;border-radius:20px;padding:22px 20px;text-align:center;max-width:290px;width:90%;animation:pop 0.4s cubic-bezier(0.34,1.4,0.64,1)}
+@keyframes pop{from{transform:scale(0.3);opacity:0}to{transform:scale(1);opacity:1}}
 .res-em{font-size:2.6rem;margin-bottom:7px}
 .res-title{font-size:1.15rem;font-weight:900;margin-bottom:4px}
 .res-sub{font-size:0.72rem;color:#aaa;margin-bottom:4px}
@@ -81,6 +87,14 @@ canvas#gallows{display:block;flex-shrink:0}
 .res-word b{color:#f0c040}
 .play-btn{width:100%;padding:11px;background:linear-gradient(135deg,#b59f3b,#f0c040);border:none;border-radius:13px;color:#1a0800;font-family:"Noto Kufi Arabic",sans-serif;font-size:0.88rem;font-weight:800;cursor:pointer;margin-bottom:8px}
 .home-btn{width:100%;padding:9px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:13px;color:#aaa;font-family:"Noto Kufi Arabic",sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer}
+.hint-overlay{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.92);backdrop-filter:blur(10px);z-index:150}
+.hint-overlay.show{display:flex}
+.hint-box{background:#16162a;border:2px solid #88aaff;border-radius:20px;padding:22px 20px;text-align:center;max-width:280px;width:90%}
+.hint-box-title{font-size:0.9rem;font-weight:900;color:#88aaff;margin-bottom:14px}
+.hint-pos-btns{display:flex;flex-direction:column;gap:10px}
+.hint-pos-btn{padding:12px;border-radius:12px;font-family:"Noto Kufi Arabic",sans-serif;font-size:0.88rem;font-weight:800;cursor:pointer;background:#1e2a3a;border:1.5px solid #88aaff;color:#88aaff}
+.hint-pos-btn:active{transform:scale(0.96)}
+.hint-cancel{margin-top:8px;padding:8px;border:none;border-radius:12px;font-family:"Noto Kufi Arabic",sans-serif;font-size:0.8rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.05);color:#666;width:100%}
 #toast{position:fixed;top:56px;left:50%;transform:translateX(-50%);background:#fff;color:#111;padding:6px 16px;border-radius:20px;font-weight:800;font-size:0.76rem;z-index:200;opacity:0;pointer-events:none;transition:opacity 0.2s;white-space:nowrap}
 #toast.show{opacity:1}
 .conf{position:fixed;border-radius:2px;pointer-events:none;z-index:70;animation:cFall linear forwards}
@@ -89,7 +103,7 @@ canvas#gallows{display:block;flex-shrink:0}
 </head>
 <body>
 <div id="app">
-<div class="screen active" id="homeScreen">
+  <div class="screen active" id="homeScreen">
   <div class="home-logo">🪢 Save The<br>Hangman</div>
   <div class="home-sub">العب مع صديقك أونلاين!</div>
   <div class="home-card">
@@ -108,7 +122,8 @@ canvas#gallows{display:block;flex-shrink:0}
     <div class="lbl">كود الغرفة — شاركه مع صديقك</div>
     <div class="code" id="roomCodeDisplay">----</div>
   </div>
-  <input class="word-entry-input" id="wordInput" type="text" maxlength="12" placeholder="اكتب الكلمة هنا..." autocomplete="off" autocorrect="off">
+  <input class="word-entry-input" id="wordInput" type="text" maxlength="14" placeholder="اكتب الكلمة السرية..." autocomplete="off" autocorrect="off" autocapitalize="off">
+  <input class="hint-entry-input" id="hintInput" type="text" maxlength="40" placeholder="💡 تلميح (مثال: لاعب أرجنتيني)" autocomplete="off">
   <button class="big-btn btn-gold" style="max-width:320px;width:100%" onclick="submitWord()">✅ تأكيد الكلمة</button>
   <div class="waiting-msg" id="waitingMsg" style="display:none">⏳ انتظر صديقك يدخل الغرفة...</div>
 </div>
@@ -116,7 +131,7 @@ canvas#gallows{display:block;flex-shrink:0}
   <div id="header">
     <div class="logo">🪢 Save The Hangman</div>
     <div class="hright">
-      <button class="hint-btn" id="hintBtn" onclick="useHint()">💡 تلميح</button>
+      <button class="hint-btn" id="hintBtn" onclick="showHintPicker()">💡 تلميح</button>
       <div class="lives" id="livesEl"></div>
     </div>
   </div>
@@ -128,10 +143,6 @@ canvas#gallows{display:block;flex-shrink:0}
     <div id="topSection">
       <canvas id="gallows"></canvas>
       <div class="word-block">
-        <div class="cat-row">
-          <div class="cat-badge" id="catEl">الفئة</div>
-          <div class="type-badge" id="typeEl">النوع</div>
-        </div>
         <div class="hint-text" id="hintText"></div>
         <div class="letters-row" id="wordEl"></div>
         <div class="tried-row" id="triedEl"></div>
@@ -157,43 +168,44 @@ canvas#gallows{display:block;flex-shrink:0}
     <button class="home-btn" onclick="goHome()">🏠 الرئيسية</button>
   </div>
 </div>
+<div class="hint-overlay" id="hintOv">
+  <div class="hint-box">
+    <div class="hint-box-title">💡 اختر وين تشوف الحرف</div>
+    <div class="hint-pos-btns">
+      <button class="hint-pos-btn" onclick="revealHintPos('first')">🔤 أول حرف</button>
+      <button class="hint-pos-btn" onclick="revealHintPos('mid')">🔤 حرف من النص</button>
+      <button class="hint-pos-btn" onclick="revealHintPos('last')">🔤 آخر حرف</button>
+    </div>
+    <button class="hint-cancel" onclick="closeHintPicker()">إلغاء</button>
+  </div>
+</div>
 <div id="toast"></div>
 <script>
-var firebaseConfig = {
-  databaseURL: "https://save-the-hangman-default-rtdb.firebaseio.com"
-};
+var firebaseConfig={databaseURL:"https://save-the-hangman-default-rtdb.firebaseio.com"};
 firebase.initializeApp(firebaseConfig);
-var db = firebase.database();
-var roomCode = "";
-var myRole = "";
-var roomRef = null;
-var gameState = null;
-var CVS, CTX;
-var hintUsed = false;
-var KB_ROWS = [
-  ["ض","ص","ث","ق","ف","غ","ع","ه","خ","ح","ج"],
-  ["ش","س","ي","ب","ل","ا","ت","ن","م","ك"],
-  ["ئ","ء","ؤ","ر","ى","ة","و","ز","ظ","ط","ذ","د"]
-];
+var db=firebase.database();
+var roomCode="",myRole="",roomRef=null,gameState=null,CVS,CTX,hintUsed=false;
+var KB_ROWS=[["ض","ص","ث","ق","ف","غ","ع","ه","خ","ح","ج"],["ش","س","ي","ب","ل","ا","ت","ن","م","ك"],["ئ","ء","ؤ","ر","ى","ة","و","ز","ظ","ط","ذ","د"]];
 function showScreen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});document.getElementById(id).classList.add("active");}
-function createRoom(){roomCode=Math.floor(1000+Math.random()*9000).toString();myRole="setter";roomRef=db.ref("rooms/"+roomCode);roomRef.set({status:"waiting_word",word:"",category:"",wtype:"",hint:"",guessed:[],wrong:0,gameOver:false,winner:""});document.getElementById("roomCodeDisplay").textContent=roomCode;showScreen("wordEntryScreen");}
-function submitWord(){var w=document.getElementById("wordInput").value.trim();if(w.length<2){showToast("اكتب كلمة صحيحة! ✋");return;}roomRef.update({word:w,category:"🎯 كلمة مخصصة",wtype:"اختارها صديقك",hint:"فكّر كويس! 🤔",status:"waiting_guesser"});document.getElementById("wordInput").style.display="none";document.querySelector("#wordEntryScreen .big-btn").style.display="none";document.getElementById("waitingMsg").style.display="block";roomRef.on("value",function(snap){var data=snap.val();if(data&&data.status==="playing"){roomRef.off();startGame(data);}});}
+function createRoom(){roomCode=Math.floor(1000+Math.random()*9000).toString();myRole="setter";roomRef=db.ref("rooms/"+roomCode);roomRef.set({status:"waiting_word",word:"",hint:"",guessed:[],wrong:0,gameOver:false,winner:""});document.getElementById("roomCodeDisplay").textContent=roomCode;document.getElementById("wordInput").value="";document.getElementById("hintInput").value="";document.getElementById("wordInput").style.display="block";document.getElementById("hintInput").style.display="block";document.querySelector("#wordEntryScreen .big-btn").style.display="block";document.getElementById("waitingMsg").style.display="none";showScreen("wordEntryScreen");}
+function submitWord(){var w=document.getElementById("wordInput").value.trim();var h=document.getElementById("hintInput").value.trim();if(w.length<2){showToast("اكتب كلمة صحيحة! ✋");return;}roomRef.update({word:w,hint:h||"فكّر كويس! 🤔",status:"waiting_guesser"});document.getElementById("wordInput").style.display="none";document.getElementById("hintInput").style.display="none";document.querySelector("#wordEntryScreen .big-btn").style.display="none";document.getElementById("waitingMsg").style.display="block";roomRef.on("value",function(snap){var data=snap.val();if(data&&data.status==="playing"){roomRef.off();startGame(data);}});}
 function joinRoom(){var code=document.getElementById("joinCodeInput").value.trim();if(code.length!==4){showToast("الكود 4 أرقام! 🔢");return;}roomCode=code;myRole="guesser";roomRef=db.ref("rooms/"+roomCode);roomRef.once("value",function(snap){var data=snap.val();if(!data){showToast("غرفة غير موجودة! ❌");return;}if(data.status==="waiting_word"){showToast("الغرفة لسا ما اتجهزت ⏳");return;}if(data.status==="playing"||data.status==="done"){showToast("الجولة بدأت! ادخل غرفة ثانية");return;}roomRef.update({status:"playing"});startGame(data);});}
-function startGame(data){gameState=data;hintUsed=false;showScreen("gameScreen");initCanvas();buildUI();var rb=document.getElementById("roleBadge");rb.textContent=myRole==="setter"?"👤 أنت: واضع الكلمة":"🎮 أنت: المخمّن";rb.className="role-badge "+(myRole==="setter"?"role-setter":"role-guesser");document.getElementById("roomMini").textContent="غرفة #"+roomCode;if(myRole==="setter"){document.getElementById("keyboard").style.display="none";document.getElementById("setterWatch").style.display="flex";document.getElementById("hintBtn").style.display="none";}else{document.getElementById("keyboard").style.display="flex";document.getElementById("setterWatch").style.display="none";buildKB();}roomRef.on("value",function(snap){var d=snap.val();if(!d)return;gameState=d;updateUI(d);if(d.gameOver&&d.status==="done"){roomRef.off();setTimeout(function(){openResult(d);},600);}});}
+function startGame(data){gameState=data;hintUsed=false;showScreen("gameScreen");initCanvas();buildUI();var rb=document.getElementById("roleBadge");rb.textContent=myRole==="setter"?"👤 أنت: واضع الكلمة":"🎮 أنت: المخمّن";rb.className="role-badge "+(myRole==="setter"?"role-setter":"role-guesser");document.getElementById("roomMini").textContent="غرفة #"+roomCode;if(myRole==="setter"){document.getElementById("keyboard").style.display="none";document.getElementById("setterWatch").style.display="flex";document.getElementById("hintBtn").style.display="none";}else{document.getElementById("keyboard").style.display="flex";document.getElementById("setterWatch").style.display="none";document.getElementById("hintBtn").style.display="block";document.getElementById("hintBtn").classList.remove("used");buildKB();}roomRef.on("value",function(snap){var d=snap.val();if(!d)return;gameState=d;updateUI(d);if(d.gameOver&&d.status==="done"){roomRef.off();setTimeout(function(){openResult(d);},600);}});}
 function initCanvas(){CVS=document.getElementById("gallows");var size=Math.min(window.innerHeight*0.22,window.innerWidth*0.38,130);CVS.width=Math.round(size*1.25);CVS.height=Math.round(size);CTX=CVS.getContext("2d");}
-function buildUI(){document.getElementById("catEl").textContent=gameState.category||"";document.getElementById("typeEl").textContent="📌 "+(gameState.wtype||"");buildWord();updateLives(gameState.wrong||0);drawG(gameState.wrong||0);}
+function buildUI(){buildWordFromData(gameState);updateLives(gameState.wrong||0);drawG(gameState.wrong||0);}
 function updateUI(d){drawG(d.wrong||0);updateLives(d.wrong||0);buildWordFromData(d);updateTried(d);if(myRole==="setter")updateSetterView(d);if(myRole==="guesser")updateKBColors(d);}
-function buildWord(){buildWordFromData(gameState);}
-function buildWordFromData(d){var row=document.getElementById("wordEl");row.innerHTML="";var word=d.word||"";var guessed=d.guessed||[];word.split("").forEach(function(ch){var b=document.createElement("div");if(ch===" "){b.className="lb space";}else{b.className="lb";if(guessed.indexOf(ch)>=0||d.gameOver){b.textContent=ch;b.classList.add(guessed.indexOf(ch)>=0?"revealed":"wrong-reveal");}}row.appendChild(b);});}
-function updateTried(d){var el=document.getElementById("triedEl");el.innerHTML="";var guessed=d.guessed||[];var word=d.word||"";guessed.forEach(function(l){var s=document.createElement("span");s.textContent=l+" ";s.className="tc "+(word.indexOf(l)>=0?"hit":"miss");el.appendChild(s);});}
-function updateLives(wrong){var h="";var rem=6-wrong;for(var i=0;i<6;i++)h+=(i<rem?"❤️":"🖤");document.getElementById("livesEl").innerHTML=h;}
-function updateSetterView(d){var el=document.getElementById("setterLetters");el.innerHTML="";var guessed=d.guessed||[];var word=d.word||"";guessed.forEach(function(l){var b=document.createElement("div");b.className="setter-letter "+(word.indexOf(l)>=0?"hit":"miss");b.textContent=l;el.appendChild(b);});document.getElementById("wrongCount").textContent="أخطاء: "+(d.wrong||0)+" / 6";var partial=word.split("").map(function(ch){if(ch===" ")return "  ";return guessed.indexOf(ch)>=0?ch:"_";}).join(" ");document.getElementById("setterWordReveal").textContent=partial;}
+function buildWordFromData(d){var row=document.getElementById("wordEl");row.innerHTML="";var word=d.word||"",guessed=d.guessed||[];word.split("").forEach(function(ch){var b=document.createElement("div");if(ch===" "){b.className="lb space";}else{b.className="lb";if(guessed.indexOf(ch)>=0||d.gameOver){b.textContent=ch;b.classList.add(guessed.indexOf(ch)>=0?"revealed":"wrong-reveal");}}row.appendChild(b);});}
+function updateTried(d){var el=document.getElementById("triedEl");el.innerHTML="";var guessed=d.guessed||[],word=d.word||"";guessed.forEach(function(l){var s=document.createElement("span");s.textContent=l+" ";s.className="tc "+(word.indexOf(l)>=0?"hit":"miss");el.appendChild(s);});}
+function updateLives(wrong){var h="",rem=6-wrong;for(var i=0;i<6;i++)h+=(i<rem?"❤️":"🖤");document.getElementById("livesEl").innerHTML=h;}
+function updateSetterView(d){var el=document.getElementById("setterLetters");el.innerHTML="";var guessed=d.guessed||[],word=d.word||"";guessed.forEach(function(l){var b=document.createElement("div");b.className="setter-letter "+(word.indexOf(l)>=0?"hit":"miss");b.textContent=l;el.appendChild(b);});document.getElementById("wrongCount").textContent="أخطاء: "+(d.wrong||0)+" / 6";var partial=word.split("").map(function(ch){if(ch===" ")return "  ";return guessed.indexOf(ch)>=0?ch:"_";}).join(" ");document.getElementById("setterWordReveal").textContent=partial;}
 function buildKB(){var kb=document.getElementById("keyboard");kb.innerHTML="";KB_ROWS.forEach(function(row){var r=document.createElement("div");r.className="kb-row";row.forEach(function(L){var b=document.createElement("button");b.className="key";b.textContent=L;b.id="k_"+L;(function(letter){b.addEventListener("touchstart",function(e){e.preventDefault();doGuess(letter);},{passive:false});b.addEventListener("click",function(){doGuess(letter);});})(L);r.appendChild(b);});kb.appendChild(r);});}
-function updateKBColors(d){var guessed=d.guessed||[];var word=d.word||"";guessed.forEach(function(l){var btn=document.getElementById("k_"+l);if(btn){btn.className="key used "+(word.indexOf(l)>=0?"hit":"miss");}});}
-function doGuess(letter){if(myRole!=="guesser")return;var d=gameState;if(d.gameOver)return;var guessed=d.guessed?d.guessed.slice():[];if(guessed.indexOf(letter)>=0){showToast("جربته! ↩️");return;}guessed.push(letter);var word=d.word||"";var wrong=d.wrong||0;var isHit=word.indexOf(letter)>=0;if(!isHit)wrong++;var allFound=true;word.split("").forEach(function(ch){if(ch!==" "&&guessed.indexOf(ch)<0)allFound=false;});var gameOver=allFound||wrong>=6;var winner=allFound?"guesser":(wrong>=6?"setter":"");roomRef.update({guessed:guessed,wrong:wrong,gameOver:gameOver,winner:winner,status:gameOver?"done":"playing"});}
-function useHint(){if(hintUsed||myRole!=="guesser")return;hintUsed=true;document.getElementById("hintBtn").classList.add("used");document.getElementById("hintText").textContent="💡 "+(gameState.hint||"");showToast("تلميح مكشوف! 💡");}
+function updateKBColors(d){var guessed=d.guessed||[],word=d.word||"";guessed.forEach(function(l){var btn=document.getElementById("k_"+l);if(btn){btn.className="key used "+(word.indexOf(l)>=0?"hit":"miss");}});}
+function doGuess(letter){if(myRole!=="guesser")return;var d=gameState;if(d.gameOver)return;var guessed=d.guessed?d.guessed.slice():[];if(guessed.indexOf(letter)>=0){showToast("جربته! ↩️");return;}guessed.push(letter);var word=d.word||"",wrong=d.wrong||0,isHit=word.indexOf(letter)>=0;if(!isHit)wrong++;var allFound=true;word.split("").forEach(function(ch){if(ch!==" "&&guessed.indexOf(ch)<0)allFound=false;});var gameOver=allFound||wrong>=6,winner=allFound?"guesser":(wrong>=6?"setter":"");roomRef.update({guessed:guessed,wrong:wrong,gameOver:gameOver,winner:winner,status:gameOver?"done":"playing"});}
+function showHintPicker(){if(hintUsed||myRole!=="guesser")return;document.getElementById("hintOv").classList.add("show");}
+function closeHintPicker(){document.getElementById("hintOv").classList.remove("show");}
+function revealHintPos(pos){closeHintPicker();if(hintUsed)return;var d=gameState,word=d.word||"",guessed=d.guessed?d.guessed.slice():[];var letter=null;if(pos==="first"){for(var i=0;i<word.length;i++){if(word[i]!==" "&&guessed.indexOf(word[i])<0){letter=word[i];break;}}}else if(pos==="last"){for(var i=word.length-1;i>=0;i--){if(word[i]!==" "&&guessed.indexOf(word[i])<0){letter=word[i];break;}}}else{var mid=Math.floor(word.length/2),found=false;for(var i=mid;i<word.length;i++){if(word[i]!==" "&&guessed.indexOf(word[i])<0){letter=word[i];found=true;break;}}if(!found){for(var i=mid-1;i>=0;i--){if(word[i]!==" "&&guessed.indexOf(word[i])<0){letter=word[i];break;}}}}if(!letter){showToast("ما في حروف باقية! 🎉");return;}hintUsed=true;document.getElementById("hintBtn").classList.add("used");if(d.hint)document.getElementById("hintText").textContent="💡 "+d.hint;guessed.push(letter);var wrong=d.wrong||0,allFound=true;word.split("").forEach(function(ch){if(ch!==" "&&guessed.indexOf(ch)<0)allFound=false;});var gameOver=allFound||wrong>=6,winner=allFound?"guesser":(wrong>=6?"setter":"");roomRef.update({guessed:guessed,wrong:wrong,gameOver:gameOver,winner:winner,status:gameOver?"done":"playing"});showToast("تلميح: حرف \""+letter+"\" اتكشف! 💡");}
 function openResult(d){var guesserWon=d.winner==="guesser";var iWon=(myRole==="guesser"&&guesserWon)||(myRole==="setter"&&!guesserWon);document.getElementById("resEm").textContent=iWon?"🎉":"😔";document.getElementById("resTitle").textContent=iWon?"فزت! 🏆":"خسرت! 💀";document.getElementById("resSub").textContent=guesserWon?"المخمّن اكتشف الكلمة!":"المخمّن ما قدر يكتشفها!";document.getElementById("resWord").textContent=d.word;if(iWon)confetti();document.getElementById("resOv").classList.add("show");}
-function playAgain(){document.getElementById("resOv").classList.remove("show");if(myRole==="setter"){roomRef.update({status:"waiting_word",word:"",guessed:[],wrong:0,gameOver:false,winner:""});document.getElementById("wordInput").value="";document.getElementById("wordInput").style.display="block";document.querySelector("#wordEntryScreen .big-btn").style.display="block";document.getElementById("waitingMsg").style.display="none";showScreen("wordEntryScreen");}else{showToast("انتظر صديقك يختار كلمة جديدة ⏳");roomRef.on("value",function(snap){var d=snap.val();if(d&&d.status==="playing"){roomRef.off();startGame(d);}});}}
+function playAgain(){document.getElementById("resOv").classList.remove("show");if(myRole==="setter"){roomRef.update({status:"waiting_word",word:"",hint:"",guessed:[],wrong:0,gameOver:false,winner:""});document.getElementById("wordInput").value="";document.getElementById("hintInput").value="";document.getElementById("wordInput").style.display="block";document.getElementById("hintInput").style.display="block";document.querySelector("#wordEntryScreen .big-btn").style.display="block";document.getElementById("waitingMsg").style.display="none";showScreen("wordEntryScreen");roomRef.on("value",function(snap){var data=snap.val();if(data&&data.status==="playing"){roomRef.off();startGame(data);}});}else{showToast("انتظر صديقك يختار كلمة جديدة ⏳");roomRef.on("value",function(snap){var d=snap.val();if(d&&d.status==="playing"){roomRef.off();startGame(d);}});}}
 function goHome(){if(roomRef)roomRef.off();document.getElementById("resOv").classList.remove("show");document.getElementById("joinCodeInput").value="";showScreen("homeScreen");}
 function drawG(e){if(!CTX)return;var c=CTX,W=CVS.width,H=CVS.height;c.clearRect(0,0,W,H);var s=H/110;c.save();c.scale(s,s);c.strokeStyle="#f0c040";c.lineWidth=3;c.lineCap="round";c.beginPath();c.moveTo(8,H/s-4);c.lineTo(W/s-8,H/s-4);c.stroke();c.beginPath();c.moveTo(32,H/s-4);c.lineTo(32,8);c.stroke();c.beginPath();c.moveTo(32,8);c.lineTo(92,8);c.stroke();c.beginPath();c.moveTo(92,8);c.lineTo(92,26);c.stroke();c.strokeStyle="#ff5555";c.fillStyle="#ff5555";if(e>=1){c.beginPath();c.arc(92,38,11,0,Math.PI*2);c.stroke();}if(e>=2){c.beginPath();c.moveTo(92,49);c.lineTo(92,82);c.stroke();}if(e>=3){c.beginPath();c.moveTo(92,62);c.lineTo(74,76);c.stroke();}if(e>=4){c.beginPath();c.moveTo(92,62);c.lineTo(110,76);c.stroke();}if(e>=5){c.beginPath();c.moveTo(92,82);c.lineTo(76,100);c.stroke();}if(e>=6){c.beginPath();c.moveTo(92,82);c.lineTo(108,100);c.stroke();}if(e>=6){[[87,34],[90,37]].forEach(function(p){c.beginPath();c.moveTo(p[0],p[1]);c.lineTo(p[0]+4,p[1]+4);c.stroke();c.beginPath();c.moveTo(p[0]+4,p[1]);c.lineTo(p[0],p[1]+4);c.stroke();});c.beginPath();c.arc(92,44,4,0,Math.PI);c.stroke();}else if(e>0){c.fillStyle="#ffaa44";c.beginPath();c.arc(88,36,2,0,Math.PI*2);c.fill();c.beginPath();c.arc(96,36,2,0,Math.PI*2);c.fill();c.strokeStyle="#ffaa44";c.lineWidth=1.5;c.beginPath();c.arc(92,42,3,0,Math.PI,true);c.stroke();}c.restore();}
 function confetti(){var cols=["#FFD700","#FF6B6B","#4ECDC4","#f0c040","#ff88cc"];for(var i=0;i<40;i++){(function(d){setTimeout(function(){var c=document.createElement("div");c.className="conf";c.style.left=(Math.random()*100)+"vw";c.style.background=cols[Math.floor(Math.random()*cols.length)];c.style.animationDuration=(1.5+Math.random()*2)+"s";c.style.width=(5+Math.random()*8)+"px";c.style.height=c.style.width;document.body.appendChild(c);setTimeout(function(){if(c.parentNode)c.parentNode.removeChild(c);},4000);},d);})(i*80);}}
